@@ -1,0 +1,10 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+}
+
+.row > .cell:last-child {
+    border-right: none;
+}

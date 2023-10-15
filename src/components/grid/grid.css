@@ -1,0 +1,10 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+
+.grid> .row:last-child > .cell {
+    border-bottom: none;
+}
