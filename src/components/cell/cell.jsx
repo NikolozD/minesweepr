@@ -12,13 +12,13 @@ function Cell({ x, y }) {
   const cellPosition = [x, y];
   const bombs = [
     [1, 1],
-    [5, 4],
+    [2, 4],
     [9, 9],
     [5, 3],
-    [3, 3],
-    [3, 2],
+    [7, 1],
+    [3, 8],
     [4, 2],
-    [5, 2],
+    [6, 6],
     [4, 4],
     [3, 4],
   ];
@@ -61,28 +61,80 @@ function Cell({ x, y }) {
           oppenedEmptys[i][0][0] + 1 == x &&
           oppenedEmptys[i][0][1] - 1 + j == y
         ) {
-          return setCellStatus((curState) => {
-            return { ...curState, open: true };
-          });
+          if (cellStatus.neighbors !== 0) {
+            return setCellStatus((curState) => {
+              return { ...curState, open: true };
+            });
+          } else {
+            return (
+              setCellStatus((curState) => {
+                return { ...curState, open: true };
+              }),
+              setOppenEmptys((curState) => {
+                const newState = [...curState];
+                newState.push([cellPosition]);
+                return newState;
+              })
+            );
+          }
         }
         if (
           oppenedEmptys[i][0][0] - 1 == x &&
           oppenedEmptys[i][0][1] - 1 + j == y
         ) {
-          return setCellStatus((curState) => {
-            return { ...curState, open: true };
-          });
+          if (cellStatus.neighbors !== 0) {
+            return setCellStatus((curState) => {
+              return { ...curState, open: true };
+            });
+          } else {
+            return (
+              setCellStatus((curState) => {
+                return { ...curState, open: true };
+              }),
+              setOppenEmptys((curState) => {
+                const newState = [...curState];
+                newState.push([cellPosition]);
+                return newState;
+              })
+            );
+          }
         }
       }
       if (oppenedEmptys[i][0][0] == x && oppenedEmptys[i][0][1] - 1 == y) {
-        return setCellStatus((curState) => {
-          return { ...curState, open: true };
-        });
+        if (cellStatus.neighbors !== 0) {
+          return setCellStatus((curState) => {
+            return { ...curState, open: true };
+          });
+        } else {
+          return (
+            setCellStatus((curState) => {
+              return { ...curState, open: true };
+            }),
+            setOppenEmptys((curState) => {
+              const newState = [...curState];
+              newState.push([cellPosition]);
+              return newState;
+            })
+          );
+        }
       }
       if (oppenedEmptys[i][0][0] == x && oppenedEmptys[i][0][1] + 1 == y) {
-        return setCellStatus((curState) => {
-          return { ...curState, open: true };
-        });
+        if (cellStatus.neighbors !== 0) {
+          return setCellStatus((curState) => {
+            return { ...curState, open: true };
+          });
+        } else {
+          return (
+            setCellStatus((curState) => {
+              return { ...curState, open: true };
+            }),
+            setOppenEmptys((curState) => {
+              const newState = [...curState];
+              newState.push([cellPosition]);
+              return newState;
+            })
+          );
+        }
       }
     }
     console.log(oppenedEmptys);
