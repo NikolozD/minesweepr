@@ -55,6 +55,9 @@ function Cell({ x, y }) {
   }, []);
 
   useEffect(() => {
+    if (cellStatus.open) {
+      return;
+    }
     for (let i = 0; i < oppenedEmptys.length; i++) {
       for (let j = 0; j < 3; j++) {
         if (
@@ -102,20 +105,21 @@ function Cell({ x, y }) {
       }
       if (oppenedEmptys[i][0][0] == x && oppenedEmptys[i][0][1] - 1 == y) {
         if (cellStatus.neighbors !== 0) {
-          return setCellStatus((curState) => {
+          setCellStatus((curState) => {
             return { ...curState, open: true };
           });
+          return;
         } else {
-          return (
-            setCellStatus((curState) => {
-              return { ...curState, open: true };
-            }),
-            setOppenEmptys((curState) => {
-              const newState = [...curState];
-              newState.push([cellPosition]);
-              return newState;
-            })
-          );
+          setCellStatus((curState) => {
+            return { ...curState, open: true };
+          });
+          setOppenEmptys((curState) => {
+            const newState = [...curState];
+            newState.push([cellPosition]);
+            return newState;
+          });
+
+          return;
         }
       }
       if (oppenedEmptys[i][0][0] == x && oppenedEmptys[i][0][1] + 1 == y) {
@@ -156,14 +160,18 @@ function Cell({ x, y }) {
   if (!cellStatus.open) {
     return (
       <div className="cell" onClick={handleClick}>
-        Def
+        <img src="\src\assets\defsquare.png" alt="Def" />
       </div>
     );
   } else if (cellStatus.open) {
     if (cellStatus.open && cellStatus.bomb) {
-      return <div className="cell">Bomb</div>;
+      return (
+        <div className="cell">
+          <img src="\src\assets\bomb.png" alt="" />
+        </div>
+      );
     } else if (cellStatus.neighbors == 0) {
-      return <div className="cell">Empty</div>;
+      return <div className="cell"></div>;
     } else {
       return <div className="cell">{cellStatus.neighbors}</div>;
     }
