@@ -1,13 +1,18 @@
 import Cell from "../cell/cell";
 import "./row.css";
-function Row({ y }) {
+
+function Row({ row, y, openCheck, oppendRow }) {
   return (
     <div className="row">
-      {Array(10)
-        .fill()
-        .map((_, index) => (
-          <Cell x={index} y={y} />
-        ))}
+      {row.map((cell, index) => (
+        <Cell
+          cell={cell}
+          x={index}
+          y={y}
+          openCheck={openCheck}
+          oppendCell={oppendRow[index]}
+        />
+      ))}
     </div>
   );
 }

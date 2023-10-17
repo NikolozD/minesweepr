@@ -1,19 +1,12 @@
-import { useState } from "react";
 import "./App.css";
-import Grid from "./components/grid/grid";
-import { StatusContext } from "../StatusContext";
+import Grid from "./components/grid/Grid";
+import { setBombPlacment } from "../bombs";
 
 function App() {
-  const [oppenedEmptys, setOppenEmptys] = useState([]);
-  const statusContext = {
-    oppenedEmptys: oppenedEmptys,
-    setOppenEmptys: setOppenEmptys,
-  };
+  const grid = setBombPlacment(10, 10, 16);
   return (
     <>
-      <StatusContext.Provider value={statusContext}>
-        <Grid />
-      </StatusContext.Provider>
+      <Grid grid={grid} />
     </>
   );
 }

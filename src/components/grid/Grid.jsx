@@ -1,16 +1,27 @@
 import { useState } from "react";
 import Row from "../row/Row";
 import "./grid.css";
-import { StatusContext } from "../../../StatusContext";
+import { createStatusCells, generateGrid } from "../../../bombs";
 
-function Grid() {
+function Grid({ grid }) {
+  const [oppenedCells, setOppenedCells] = useState(generateGrid(10, 10));
+  function openCheck(x, y) {
+    setOppenedCells((curState) => {
+      const newState = [...curState];
+      return createStatusCells(x, y, newState, grid);
+    });
+  }
+  console.log(oppenedCells);
   return (
     <div className="grid">
-      {Array(10)
-        .fill()
-        .map((_, index) => (
-          <Row y={index} />
-        ))}
+      {grid.map((row, index) => (
+        <Row
+          row={row}
+          y={index}
+          openCheck={openCheck}
+          oppendRow={oppenedCells[index]}
+        />
+      ))}
     </div>
   );
 }
