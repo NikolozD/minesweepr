@@ -8,14 +8,14 @@ function Cell({ cell, x, y, oppendCell, openCheck }) {
   if (oppendCell === 0) {
     return (
       <div className="cell" onClick={handleClick}>
-        <img src="\src\assets\defsquare.png" alt="Def" />
+        <img src="\assets\defsquare.png" alt="Def" />
       </div>
     );
   } else if (oppendCell === 1) {
     if (oppendCell && cell === -1) {
       return (
         <div className="cell">
-          <img src="\src\assets\bomb.png" alt="" />
+          <img src="\assets\bomb.png" alt="" />
         </div>
       );
     } else if (cell === 0) {
