@@ -1,0 +1,38 @@
+.alert_wraper {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    font-size: 2rem;
+    width: 100vw;
+    height:100%;
+    background: rgba(197, 194, 194, 0.7);
+    z-index: 10;
+    
+}
+.alert_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    border-radius: 15px;
+    background-color: #f1f0ee;
+    width: 400px;
+    height: 200px;
+    z-index: 10;
+   
+}
+
+.alert_button {
+    background-color: rgb(109, 109, 110);
+    font-weight: 600;
+    width: 70px;
+    height: 30px;
+    border-radius: 15px;
+}
+.alert_button:hover {
+    cursor: pointer;
+    background-color: rgb(109, 109, 110, 0.2);
+}

@@ -77,7 +77,13 @@ export function createStatusCells(x, y, oppendCells, grid) {
     return oppendCells;
   }
   if (grid[y][x] === -1) {
-    oppendCells[y][x] = 1;
-    return oppendCells;
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] == -1) {
+          oppendCells[i][j] = 1;
+        }
+      }
+    }
+    return { oppendCells: oppendCells, isGameOver: true };
   }
 }

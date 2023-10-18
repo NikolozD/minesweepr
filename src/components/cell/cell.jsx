@@ -1,4 +1,3 @@
-import { cloneElement } from "react";
 import "./cell.css";
 
 function Cell({ cell, x, y, oppendCell, openCheck }) {
