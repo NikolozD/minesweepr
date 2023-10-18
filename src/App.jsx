@@ -3,7 +3,7 @@ import Grid from "./components/grid/Grid";
 import { setBombPlacment } from "../bombs";
 
 function App() {
-  const grid = setBombPlacment(10, 10, 16);
+  const grid = setBombPlacment(30, 16, 96);
   return (
     <>
       <Grid grid={grid} />

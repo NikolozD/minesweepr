@@ -1,10 +1,20 @@
+import { cloneElement } from "react";
 import "./cell.css";
 
 function Cell({ cell, x, y, oppendCell, openCheck }) {
   function handleClick() {
     openCheck(x, y);
   }
-
+  const colors = [
+    "cyan",
+    "green",
+    "yellow",
+    "red",
+    "pink",
+    "brown",
+    "purple",
+    "blue",
+  ];
   if (oppendCell === 0) {
     return (
       <div className="cell" onClick={handleClick}>
@@ -21,7 +31,11 @@ function Cell({ cell, x, y, oppendCell, openCheck }) {
     } else if (cell === 0) {
       return <div className="cell"></div>;
     } else {
-      return <div className="cell">{cell}</div>;
+      return (
+        <div className="cell" style={{ color: colors[cell - 1] }}>
+          {cell}
+        </div>
+      );
     }
   }
   return <div>{cell}</div>;

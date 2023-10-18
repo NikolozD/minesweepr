@@ -4,7 +4,7 @@ import "./grid.css";
 import { createStatusCells, generateGrid } from "../../../bombs";
 
 function Grid({ grid }) {
-  const [oppenedCells, setOppenedCells] = useState(generateGrid(10, 10));
+  const [oppenedCells, setOppenedCells] = useState(generateGrid(30, 16));
   function openCheck(x, y) {
     setOppenedCells((curState) => {
       const newState = [...curState];
