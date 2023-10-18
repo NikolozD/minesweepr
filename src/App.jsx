@@ -6,7 +6,7 @@ import Alert from "./components/alert/alert";
 import { useState } from "react";
 
 function App() {
-  const [grid, setGrid] = useState(setBombPlacment(30, 16, 8));
+  const [grid, setGrid] = useState(setBombPlacment(30, 16, 90));
   const [oppenedCells, setOppenedCells] = useState(generateGrid(30, 16));
   const [isGameOver, setIsGameOver] = useState(false);
 
