@@ -6,17 +6,17 @@ import Alert from "./components/alert/alert";
 import { useState } from "react";
 
 function App() {
-  const [grid, setGrid] = useState(setBombPlacment(30, 16, 90));
-  const [oppenedCells, setOppenedCells] = useState(generateGrid(30, 16));
+  const [grid, setGrid] = useState(setBombPlacment(10, 10, 20));
+  const [oppenedCells, setOppenedCells] = useState(generateGrid(10, 10));
   const [isGameOver, setIsGameOver] = useState(false);
 
   function setGameOver() {
     setIsGameOver(true);
   }
   function restart() {
-    setGrid(setBombPlacment(30, 16, 96));
+    setGrid(setBombPlacment(10, 10, 20));
     setIsGameOver(false);
-    setOppenedCells(generateGrid(30, 16));
+    setOppenedCells(generateGrid(10, 10));
   }
   function openCheck(x, y) {
     setOppenedCells((curState) => {
