@@ -1,8 +1,9 @@
 .row {
     display: flex;
+    flex: 1;
     flex-direction: row;
-    width: fit-content;
-    height: fit-content;
+    width: 500px
+   
 }
 
 .row > .cell:last-child {

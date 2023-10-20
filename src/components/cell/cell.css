@@ -1,6 +1,5 @@
 .cell {
-    width: 30px;
-    height: 30px;
+    flex: 1;
     background-color: gray;
     box-shadow: inset;
     border-right: 1px solid;

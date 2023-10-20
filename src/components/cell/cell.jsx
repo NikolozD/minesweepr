@@ -1,9 +1,12 @@
+import { useState } from "react";
 import "./cell.css";
+import { CELL_FLAGGED, CELL_OPEN, GRID_BOMB } from "../../../bombs";
 
 function Cell({ cell, x, y, oppendCell, openCheck }) {
-  function handleClick() {
-    openCheck(x, y);
+  function handleClick(e) {
+    openCheck(x, y, e);
   }
+
   const colors = [
     "cyan",
     "green",
@@ -14,14 +17,8 @@ function Cell({ cell, x, y, oppendCell, openCheck }) {
     "purple",
     "blue",
   ];
-  if (oppendCell === 0) {
-    return (
-      <div className="cell" onClick={handleClick}>
-        <img src="\assets\defsquare.png" alt="Def" />
-      </div>
-    );
-  } else if (oppendCell === 1) {
-    if (oppendCell && cell === -1) {
+  if (oppendCell === CELL_OPEN) {
+    if (oppendCell && cell === GRID_BOMB) {
       return (
         <div className="cell">
           <img src="\assets\bomb.png" alt="" />
@@ -36,8 +33,22 @@ function Cell({ cell, x, y, oppendCell, openCheck }) {
         </div>
       );
     }
+  } else {
+    return (
+      <div className="cell">
+        {oppendCell == CELL_FLAGGED ? (
+          <img onContextMenu={handleClick} src="\assets\flag.png" alt="Def" />
+        ) : (
+          <img
+            onClick={handleClick}
+            onContextMenu={handleClick}
+            src="\assets\defsquare.png"
+            alt="Def"
+          />
+        )}
+      </div>
+    );
   }
-  return <div>{cell}</div>;
 }
 
 export default Cell;
